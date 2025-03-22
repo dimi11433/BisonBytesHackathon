@@ -5,8 +5,9 @@ import json
 from pathlib import Path
 from dotenv import load_dotenv
 
+load_dotenv()
 
-key = "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"
+key = os.getenv("EVO_API_KEY")
 
 r = requests.post(
     url=os.getenv("URL", "https://health.api.nvidia.com/v1/biology/arc/evo2-40b/generate"),
