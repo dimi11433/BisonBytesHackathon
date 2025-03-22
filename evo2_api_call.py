@@ -3,6 +3,8 @@ import requests
 import os
 import json
 from pathlib import Path
+from dotenv import load_dotenv
+
 
 key = "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"
 
