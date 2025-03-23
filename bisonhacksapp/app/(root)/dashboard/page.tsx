@@ -11,7 +11,7 @@ const Page = () => {
     <div className="p-6 bg-gradient-to-r from-blue-100 via-green-100 to-pink-100">
       {/* Logo and Doctor's Name */}
       <div className="flex flex-col items-center mb-6">
-        <Image src="/bisonbytes.jpeg" alt="BisonBytes Logo" width={100} height={100} className="mb-2" />
+        <Image src="/bisonbytes.jpeg" alt="BisonBytes Logo" width={150} height={150} className="mb-2" />
         <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">
           Dr. Bison
         </h1>
@@ -28,8 +28,7 @@ const Page = () => {
             <h2 className="text-xl font-semibold text-gray-700">{user.name}</h2>
             <p className="text-gray-500">Age: {user.Age}</p>
             <p className="text-gray-500">Heart Rate: {user.Heartrate} BPM</p>
-            <p className="text-gray-500">Steps: {user.Steps}</p>
-            <p className="text-gray-500">BMI: {user.BMI}</p>
+            <p className="text-gray-500">Temp: {user.Temp}</p>
             <button className="mt-2 px-4 py-2 bg-blue-500 text-white rounded-lg" onClick={() => router.push(`/dashboard/${user.name}`)}>View Profile</button>
           </div>
         ))}
