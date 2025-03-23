@@ -163,7 +163,7 @@ const Page = ({
                 Sleep Consistency: {userInfo?.Sleep_Consistency}
               </p>
               <p className="text-2xl font-medium text-center">
-                {userInfo?.Steps} steps/day
+                {userInfo?.Steps} steps taken today
               </p>
               <p className="text-2xl font-medium text-center">
                 Active: {userInfo?.Strength_Training}{" "}
