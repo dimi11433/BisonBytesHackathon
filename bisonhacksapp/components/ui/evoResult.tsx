@@ -22,7 +22,7 @@ const EvoResult = ({ gene }: { gene: string }) => {
   }, []);
   return (
     <div className="flex flex-col gap-4">
-      {(hasUpdated) ? mutations.map((mutation, index) => (
+      {(hasUpdated) ? mutations.slice(0, 2).map((mutation, index) => (
         <div
           key={index}
           className="hover-container bg-[#16113a] p-2"

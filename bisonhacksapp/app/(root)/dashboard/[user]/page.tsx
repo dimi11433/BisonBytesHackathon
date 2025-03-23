@@ -201,10 +201,10 @@ const Page = ({
               </Link>
             </div>
           </div>
-          <div className="hover-container flex-grow flex flex-col items-center">
+          <div className="hover-container flex-grow flex flex-col items-center p-2">
             <h2 className="text-2xl font-bold">Evo2 Results</h2>
             <EvoResult gene={gene} />
-            <div className="flex flex-col items-start w-full p-4">
+            <div className="flex flex-row items-start w-full p-4 justify-between">
               <button
                 className="bttn"
                 onClick={() => {
@@ -213,6 +213,9 @@ const Page = ({
               >
                 Submit sequence
               </button>
+              <Link href={""} className="text-blue-500">
+                View More
+              </Link>
             </div>
           </div>
           <div className="hover-container flex-grow">
