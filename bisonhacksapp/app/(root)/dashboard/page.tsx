@@ -2,15 +2,15 @@
 import { useRouter } from "next/navigation";
 
 
-const Home = () => {
+const Page = () => {
   const router = useRouter();
   return (
     <div className="flex flex-col items-center justify-center h-screen">
-      <button onClick={() => router.push("/dashboard")} className="bttn">
-        Go to dashboard
+      <button onClick={() => router.push("/dashboard/Jeff")} className="bttn">
+        Go to user
       </button>
     </div>
   );
 }
 
-export default Home;
+export default Page;

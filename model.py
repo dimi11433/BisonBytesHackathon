@@ -130,7 +130,7 @@ def score_row(row):
     return normalized_score
 
 
-def load_csv_with_score(file_path):
+def load_csv_with_score():
     sleep_quality_map = {
         'Good': 0,
         'Average': 1,

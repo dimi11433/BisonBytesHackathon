@@ -28,4 +28,3 @@ elif "application/zip" in r.headers.get("Content-Type", ""):
     Path("data.zip").write_bytes(r.content)
 else:
     print(r, r.headers, r.content)
-    
