@@ -14,7 +14,8 @@ const Page = async ({
 
   const userInfo = users.find((u) => u.name === user);
 
-  const isBloodSuagrGood = (userInfo?.Blood_Sugar ?? 90) < 90 && (userInfo?.Blood_Sugar ?? 90) > 70;
+  const isBloodSuagrGood =
+    (userInfo?.Blood_Sugar ?? 90) < 90 && (userInfo?.Blood_Sugar ?? 90) > 70;
 
   return (
     <div className="flex flex-col h-screen w-screen">
@@ -28,7 +29,7 @@ const Page = async ({
         </div>
       </div>
       <div className="flex flex-row">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 place-items-center gap-6 w-[40vw] p-4 m-4 h-max hover-container">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 place-items-center gap-6 w-[40vw] p-4 m-4 h-max hover-container bg-[#272953]">
           <Guage
             name="Heart Rate"
             limits={[50, 65, 81, 98]}
@@ -71,14 +72,37 @@ const Page = async ({
             unit="mmHg"
             range_type="dec"
           />
-          <div className="hover-container p-5 flex flex-col shadow-xl rounded-2xl">
+          <div className="hover-container p-5 flex flex-col shadow-xl rounded-2xl bg-[#16113a]">
             {/* <h2 className="text-xl font-semibold text-gray-700">Blood Sugar Level</h2> */}
-            <p className="font-bold">Blood Sugar Level: {userInfo?.Blood_Sugar}</p>
-            <p>Status: <span className={(isBloodSuagrGood ? "text-green-600 font-bold": "text-red-600 font-bold")}>{isBloodSuagrGood ? "Good" : "Bad"}</span></p>
+            <p className="font-bold">
+              Blood Sugar Level: {userInfo?.Blood_Sugar}
+            </p>
+            <p>
+              Status:{" "}
+              <span
+                className={
+                  isBloodSuagrGood
+                    ? "text-green-600 font-bold"
+                    : "text-red-600 font-bold"
+                }
+              >
+                {isBloodSuagrGood ? "Good" : "Bad"}
+              </span>
+            </p>
             <button className="mt-2 px-4 py-2 bg-blue-500 text-white rounded-lg">
               Edit
             </button>
           </div>
+        </div>
+
+        {/* Start here */}
+        <div>
+
+        </div>
+        {/* End here */}
+
+        <div>
+          
         </div>
       </div>
     </div>
