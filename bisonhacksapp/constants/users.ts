@@ -1,6 +1,6 @@
 const users = [
   {
-    name: "John Doe",
+    name: "John",
     Heartrate: 98,
     BP_Systolic: 95,
     BP_Diastolic: 72,
@@ -20,7 +20,7 @@ const users = [
     Blood_Sugar: 112.7,
   },
   {
-    name: "Jane Doe",
+    name: "Jane",
     Heartrate: 88,
     BP_Systolic: 105,
     BP_Diastolic: 79,
@@ -40,7 +40,7 @@ const users = [
     Blood_Sugar: 81.4,
   },
   {
-    name: "Alice Doe",
+    name: "Alice",
     Heartrate: 74,
     BP_Systolic: 118,
     BP_Diastolic: 89,
@@ -60,7 +60,7 @@ const users = [
     Blood_Sugar: 70.9,
   },
   {
-    name: "Bob Doe",
+    name: "Bob",
     Heartrate: 67,
     BP_Systolic: 92,
     BP_Diastolic: 74,
@@ -80,7 +80,7 @@ const users = [
     Blood_Sugar: 103.8,
   },
   {
-    name: "Charlie Doe",
+    name: "Charlie",
     Heartrate: 80,
     BP_Systolic: 109,
     BP_Diastolic: 62,
@@ -100,7 +100,7 @@ const users = [
     Blood_Sugar: 93.6,
   },
   {
-    name: "David Doe",
+    name: "David",
     Heartrate: 98,
     BP_Systolic: 125,
     BP_Diastolic: 82,
@@ -120,7 +120,7 @@ const users = [
     Blood_Sugar: 108.9,
   },
   {
-    name: "Eve Doe",
+    name: "Eve",
     Heartrate: 78,
     BP_Systolic: 108,
     BP_Diastolic: 67,
@@ -140,7 +140,7 @@ const users = [
     Blood_Sugar: 116.2,
   },
   {
-    name: "Frank Doe",
+    name: "Frank",
     Heartrate: 82,
     BP_Systolic: 115,
     BP_Diastolic: 79,
@@ -160,7 +160,7 @@ const users = [
     Blood_Sugar: 73.5,
   },
   {
-    name: "Grace Doe",
+    name: "Grace",
     Heartrate: 70,
     BP_Systolic: 92,
     BP_Diastolic: 75,
@@ -180,7 +180,7 @@ const users = [
     Blood_Sugar: 79.8,
   },
   {
-    name: "Harry Doe",
+    name: "Harry",
     Heartrate: 70,
     BP_Systolic: 108,
     BP_Diastolic: 72,
