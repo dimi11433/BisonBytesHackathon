@@ -9,6 +9,20 @@ const Page = () => {
   const router = useRouter();
   const [name, setName] = useState("");
 
+  function convertValuesToString(obj: { [key: string]: any }): { [key: string]: string } {
+    const result: { [key: string]: string } = {};
+  
+    for (const key in obj) {
+      if (typeof obj[key] === 'number') {
+        result[key] = obj[key].toString(); // or String(obj[key])
+      } else {
+        result[key] = obj[key]; // keep the value unchanged if it's not a number
+      }
+    }
+  
+    return result;
+  }
+
   useEffect(() => {
     const fetchServerInfo = async () => {
       const res = await fetch("/api/server-name"); 
@@ -16,6 +30,21 @@ const Page = () => {
       const data = await res.json();
       setName(data.name);
     }
+
+    users.forEach(async (userData) => {
+      const queryString = new URLSearchParams(convertValuesToString(userData)).toString();
+      // console.log(queryString);
+      const res = await fetch(`/api/predict?data=${userData}`);
+      console.log(res);
+      const data = await res.json();
+      console.log(data);
+      if (data.prediction == "Low") {
+        alert(`High risk detected for ${userData.name}`);
+      } else if (data.prediction == "Medium") {
+        alert(`Medium risk detected for ${userData.name}`);
+      }
+    }
+  );
 
     fetchServerInfo();
   }, []);

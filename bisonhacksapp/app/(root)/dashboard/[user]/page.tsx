@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -8,6 +8,7 @@ import Guage from "@/components/ui/guage";
 import LabTestResults from "@/constants/testResults";
 import EvoResult from "@/components/ui/evoResult";
 import { useState, useEffect } from "react";
+import AnalysisResult from "@/components/ui/analysis";
 
 const Page = ({
   params,
@@ -24,6 +25,7 @@ const Page = ({
     };
     fetchUser();
   }, []);
+
   const [gene, setGene] = useState("None");
 
   const userInfo = users.find((u) => u.name === user);
@@ -202,7 +204,7 @@ const Page = ({
             </div>
           </div>
           <div className="hover-container flex-grow flex flex-col items-center p-2">
-            <h2 className="text-2xl font-bold">Evo2 Results</h2>
+            <h2 className="text-2xl font-bold">Gene Mutation Results</h2>
             <EvoResult gene={gene} />
             <div className="flex flex-row items-start w-full p-4 justify-between">
               <button
@@ -218,13 +220,9 @@ const Page = ({
               </Link>
             </div>
           </div>
-          <div className="hover-container flex-grow">
-            <h2 className="text-2xl font-bold">Medication</h2>
-            <p>Medication: None</p>
-            <p>Prescription: None</p>
-            <button className="mt-2 px-4 py-2 bg-blue-500 text-white rounded-lg">
-              Edit
-            </button>
+          <div className="hover-container flex-grow p-4">
+            <h2 className="text-2xl font-bold">Gene Mutation Analysis Results</h2>
+            <AnalysisResult gene={gene} />
           </div>
         </div>
       </div>
