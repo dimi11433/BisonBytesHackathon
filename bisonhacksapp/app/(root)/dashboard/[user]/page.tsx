@@ -1,7 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import users from "@/constants/users";
 import Guage from "@/components/ui/guage";
+import LabTestResults from "@/constants/testResults";
 
 const Page = async ({
   params,
@@ -99,8 +101,35 @@ const Page = async ({
         <div></div>
         {/* End here */}
 
-        <div className="flex flex-col gap-4 p-4 m-4 hover-container">
-          <p>Name</p>
+        <div className="flex flex-col gap-4 m-4 w-100">
+          <div className="hover-container flex-grow p-4 flex flex-col justify-between items-center">
+            <h2 className="text-xl font-bold">Lab Test Results</h2>
+            <table className="table-auto border-collapse w-full">
+              <thead>
+                <tr className="border-b">
+                  <th className="px-4 py-2">Lab Test</th>
+                  <th className="px-4 py-2">Result</th>
+                  <th className="px-4 py-2">Normal Range</th>
+                </tr>
+              </thead>
+              <tbody>
+                {LabTestResults.slice(0, 5).map((result, index) => (
+                  <tr key={index} className="border-b">
+                    <td className="px-4 py-2">{result["Lab Test"]}</td>
+                    <td className="px-4 py-2">{result.Result}</td>
+                    <td className="px-4 py-2">{result["Normal Range"]}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <div className="align-items-start w-full">
+              <Link href={""} className="text-blue-500">
+                View More
+              </Link>
+            </div>
+          </div>
+          <div className="hover-container flex-grow">Evo-2 Results</div>
+          <div className="hover-container flex-grow">Analysis</div>
         </div>
       </div>
     </div>

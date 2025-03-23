@@ -83,7 +83,7 @@ const Guage = ({
           ],
         }}
         pointer={{
-          color: "#000",
+          color: "#fff",
           length: 0.7,
           width: 10,
           elastic: true,
