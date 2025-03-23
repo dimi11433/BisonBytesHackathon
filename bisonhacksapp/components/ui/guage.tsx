@@ -31,7 +31,7 @@ const Guage = ({
   return (
     <div className="flex flex-col items-center justify-center">
       <GaugeComponent
-        className="w-100 h-45"
+        className="w-70 h-35"
         type="semicircle"
         arc={{
           width: 0.2,
@@ -42,7 +42,7 @@ const Guage = ({
             {
               limit: limits[0],
               color: colors[0],
-              showTick: true,
+            //   showTick: true,
               tooltip: {
                 text: `${texts[0]} ${name}!`,
               },
@@ -53,7 +53,7 @@ const Guage = ({
             {
               limit: limits[1],
               color: colors[1],
-              showTick: true,
+            //   showTick: true,
               tooltip: {
                 text: `${texts[1]} ${name}!`,
               },
@@ -61,7 +61,7 @@ const Guage = ({
             {
               limit: limits[2],
               color: colors[2],
-              showTick: true,
+            //   showTick: true,
               tooltip: {
                 text: `${texts[2]} ${name}!`,
               },
@@ -69,7 +69,7 @@ const Guage = ({
             {
               limit: limits[3],
               color: colors[3],
-              showTick: true,
+            //   showTick: true,
               tooltip: {
                 text: `${texts[3]} ${name}!`,
               },
@@ -88,17 +88,17 @@ const Guage = ({
           width: 10,
           elastic: true,
         }}
-        labels={{
-          valueLabel: { formatTextValue: (value) => value + unit },
-          tickLabels: {
-            type: "outer",
-            defaultTickValueConfig: {
-              formatTextValue: (value: any) => value + unit,
-              style: { fontSize: 10 },
-            },
-            ticks: [{ value: 13 }, { value: 22.5 }, { value: 32 }],
-          },
-        }}
+        // labels={{
+        //   valueLabel: { formatTextValue: (value) => value + unit },
+        //   tickLabels: {
+        //     type: "outer",
+        //     defaultTickValueConfig: {
+        //       formatTextValue: (value: any) => value + unit,
+        //       style: { fontSize: 10 },
+        //     },
+        //     ticks: [{ value: 13 }, { value: 22.5 }, { value: 32 }],
+        //   },
+        // }}
         value={value}
         minValue={min}
         maxValue={max}

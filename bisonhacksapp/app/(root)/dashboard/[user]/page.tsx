@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from "next/image";
 
 import users from "@/constants/users";
 import Guage from "@/components/ui/guage";
@@ -14,60 +14,72 @@ const Page = async ({
 
   const userInfo = users.find((u) => u.name === user);
 
+  const isBloodSuagrGood = (userInfo?.Blood_Sugar ?? 90) < 90 && (userInfo?.Blood_Sugar ?? 90) > 70;
+
   return (
-    <div>
+    <div className="flex flex-col h-screen w-screen">
       <div className="flex justify-between p-6 ">
         <div className="flex items-center gap-2">
-          <Image src="/person.png" alt='Image of User' width={20} height={20}/>
+          <Image src="/person.png" alt="Image of User" width={20} height={20} />
           <h1>{user}'s Health Analysis Dashboard</h1>
         </div>
         <div>
           <p>My profile</p>
         </div>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 place-items-center gap-6 p-6">
-        <Guage
-          name="heart rate"
-          limits={[50, 65, 81, 98]}
-          max={130}
-          min={20}
-          value={userInfo?.Heartrate ?? 60}
-          unit="bpm"
-        />
-        <Guage
-          name="Temperature"
-          limits={[95, 97, 98.6, 100.4]}
-          max={105}
-          min={91}
-          value={userInfo?.Temp ?? 97}
-          unit="ºF"
-        />
-        <Guage
-          name="BP_Systolic"
-          limits={[120, 129, 139, 150]}
-          max={160}
-          min={100}
-          value={userInfo?.BP_Systolic ?? 100}
-          unit="mmHg"
-          range_type="inc"
-        />
-        <Guage
-          name="Respiratory_Rate"
-          limits={[10, 12, 20, 25]}
-          max={30}
-          min={5}
-          value={userInfo?.Respiratory_Rate ?? 12}
-          unit="bpm"
-        />
-        <Guage
-          name="Oxygen_Level"
-          limits={[80, 85, 90, 95]}
-          max={100}
-          min={70}
-          value={userInfo?.Oxygen_Level ?? 100}
-          unit="mmHg"
-          range_type="dec"
-        />
+      <div className="flex flex-row">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 place-items-center gap-6 w-[40vw] p-4 m-4 h-max hover-container">
+          <Guage
+            name="Heart Rate"
+            limits={[50, 65, 81, 98]}
+            max={130}
+            min={20}
+            value={userInfo?.Heartrate ?? 60}
+            unit="bpm"
+          />
+          <Guage
+            name="Temperature"
+            limits={[95, 97, 98.6, 100.4]}
+            max={105}
+            min={91}
+            value={userInfo?.Temp ?? 97}
+            unit="ºF"
+          />
+          <Guage
+            name="Blood Pressure"
+            limits={[120, 129, 139, 150]}
+            max={160}
+            min={100}
+            value={userInfo?.BP_Systolic ?? 100}
+            unit="mmHg"
+            range_type="inc"
+          />
+          <Guage
+            name="Respiratory Rate"
+            limits={[10, 12, 20, 25]}
+            max={30}
+            min={5}
+            value={userInfo?.Respiratory_Rate ?? 12}
+            unit="bpm"
+          />
+          <Guage
+            name="Oxygen Level"
+            limits={[80, 85, 90, 95]}
+            max={100}
+            min={70}
+            value={userInfo?.Oxygen_Level ?? 100}
+            unit="mmHg"
+            range_type="dec"
+          />
+          <div className="hover-container p-5 flex flex-col shadow-xl rounded-2xl">
+            {/* <h2 className="text-xl font-semibold text-gray-700">Blood Sugar Level</h2> */}
+            <p className="font-bold">Blood Sugar Level: {userInfo?.Blood_Sugar}</p>
+            <p>Status: <span className={(isBloodSuagrGood ? "text-green-600 font-bold": "text-red-600 font-bold")}>{isBloodSuagrGood ? "Good" : "Bad"}</span></p>
+            <button className="mt-2 px-4 py-2 bg-blue-500 text-white rounded-lg">
+              Edit
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );

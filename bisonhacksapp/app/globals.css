@@ -14,14 +14,18 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #ededed;
-    --foreground: #171717;
+    --background: #272953;
+    --foreground: #ededed;
   }
 }
 
 @layer base {
   .bttn {
     @apply bg-blue-500 text-white font-bold py-2 px-4 rounded;
+  }
+
+  .hover-container {
+    @apply shadow-lg rounded-2xl hover:shadow-xl transition cursor-pointer;
   }
 }
 
