@@ -25,7 +25,7 @@
   }
 
   .hover-container {
-    @apply shadow-lg rounded-2xl hover:shadow-xl transition cursor-pointer;
+    @apply shadow-lg rounded-2xl hover:shadow-xl transition cursor-pointer bg-[#272953];
   }
 }
 

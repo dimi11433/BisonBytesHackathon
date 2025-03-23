@@ -29,7 +29,7 @@ const Page = async ({
         </div>
       </div>
       <div className="flex flex-row">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 place-items-center gap-6 w-[40vw] p-4 m-4 h-max hover-container bg-[#272953]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 place-items-center gap-6 w-[40vw] p-4 m-4 h-max hover-container">
           <Guage
             name="Heart Rate"
             limits={[50, 65, 81, 98]}
@@ -96,13 +96,11 @@ const Page = async ({
         </div>
 
         {/* Start here */}
-        <div>
-
-        </div>
+        <div></div>
         {/* End here */}
 
-        <div>
-          
+        <div className="flex flex-col gap-4 p-4 m-4 hover-container">
+          <p>Name</p>
         </div>
       </div>
     </div>
