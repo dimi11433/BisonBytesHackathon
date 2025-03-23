@@ -40,7 +40,7 @@ def evo_api_call(sequence = None):
     
     for i, prob in enumerate(r.json()['sampled_probs']):
         if prob < 0.9:
-            mutations.append([i, r.json()['sampled_probs'][i]])
+            mutations.append({"position": i, "probability":r.json()['sampled_probs'][i]})
             
     return mutations
         

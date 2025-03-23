@@ -1,3 +1,5 @@
+'use client';
+
 import Image from "next/image";
 import Link from "next/link";
 
@@ -5,15 +7,24 @@ import users from "@/constants/users";
 import Guage from "@/components/ui/guage";
 import LabTestResults from "@/constants/testResults";
 import EvoResult from "@/components/ui/evoResult";
+import { useState, useEffect } from "react";
 
-const Page = async ({
+const Page = ({
   params,
   searchParams,
 }: {
   params: Promise<{ user: string }>;
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) => {
-  const user = (await params).user;
+  const [user, setUser] = useState("");
+  useEffect(() => {
+    const fetchUser = async () => {
+      const { user } = await params;
+      setUser(user);
+    };
+    fetchUser();
+  }, []);
+  const [gene, setGene] = useState("None");
 
   const userInfo = users.find((u) => u.name === user);
 
@@ -32,7 +43,7 @@ const Page = async ({
         </div>
       </div>
       <div className="flex flex-row">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 place-items-center gap-6 w-[40vw] p-4 mx-4 h-max hover-container">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 place-items-center gap-6 w-[40vw] p-4 mx-4 hover-container h-full">
           <Guage
             name="Heart Rate"
             limits={[50, 65, 81, 98]}
@@ -101,17 +112,26 @@ const Page = async ({
         {/* Start here */}
         <div className="flex flex-col items-center space-y-4">
           {/* First Container */}
-          <div className="hover-container w-50 h-70 flex flex-row justify-around items-center w-full">
+          <div className="hover-container h-70 flex flex-row justify-around items-center w-full">
             <div className="flex flex-col items-end">
-              <p className="text-6xl font-bold text-center "> {userInfo?.Age}</p>
+              <p className="text-6xl font-bold text-center ">
+                {" "}
+                {userInfo?.Age}
+              </p>
               <p className="text-lg font-bold text-center ">Years</p>
             </div>
             <div className="flex flex-col items-end">
-              <p className="text-6xl font-bold text-center"> {userInfo?.Weight} </p>
+              <p className="text-6xl font-bold text-center">
+                {" "}
+                {userInfo?.Weight}{" "}
+              </p>
               <p className="text-lg font-bold text-center">KG</p>
             </div>
             <div className="flex flex-col items-end">
-              <p className="text-6xl font-bold text-center"> {userInfo?.BMI} </p>
+              <p className="text-6xl font-bold text-center">
+                {" "}
+                {userInfo?.BMI}{" "}
+              </p>
               <p className="text-lg font-bold text-center">BMI</p>
             </div>
           </div>
@@ -119,34 +139,44 @@ const Page = async ({
           {/* Second and Third Containers (Side by Side) */}
           <div className="flex space-x-4 flex-grow">
             {/* Second Container */}
-            <div className="hover-container w-50 h-40 flex flex-col justify-around items-center h-full">
+            <div className="hover-container w-50 flex flex-col justify-around items-center h-full">
               <div>
-                <p className="text-2xl font-medium text-center">Sleep: {userInfo?.Sleep_Duration} hrs</p>
+                <p className="text-2xl font-medium text-center">
+                  Sleep: {userInfo?.Sleep_Duration} hrs
+                </p>
               </div>
               <div>
-                <p className="text-2xl font-medium text-center">Sleep Qty: {userInfo?.Sleep_Quantity}</p>
+                <p className="text-2xl font-medium text-center">
+                  Sleep Qty: {userInfo?.Sleep_Quantity}
+                </p>
               </div>
               <div>
-                <p className="text-2xl font-medium text-center">Water: {userInfo?.Water_Intake} Ltrs</p>
+                <p className="text-2xl font-medium text-center">
+                  Water: {userInfo?.Water_Intake} Ltrs
+                </p>
               </div>
             </div>
 
             {/* Third Container */}
-            <div className="hover-container w-50 h-40 flex flex-col justify-around items-center h-full">
-              <p className="text-2xl font-medium text-center">Sleep Consistency: {userInfo?.Sleep_Consistency}</p>
-              <p className="text-2xl font-medium text-center">{userInfo?.Steps} steps/day</p>
-              <p className="text-2xl font-medium text-center">Active: {userInfo?.Strength_Training} </p>
+            <div className="hover-container w-50 flex flex-col justify-around items-center h-full">
+              <p className="text-2xl font-medium text-center">
+                Sleep Consistency: {userInfo?.Sleep_Consistency}
+              </p>
+              <p className="text-2xl font-medium text-center">
+                {userInfo?.Steps} steps/day
+              </p>
+              <p className="text-2xl font-medium text-center">
+                Active: {userInfo?.Strength_Training}{" "}
+              </p>
             </div>
           </div>
         </div>
-
-
 
         {/* End here */}
 
         <div className="flex flex-col gap-4 mx-4 w-100">
           <div className="hover-container flex-grow p-4 flex flex-col justify-between items-center">
-            <h2 className="text-xl font-bold">Lab Test Results</h2>
+            <h2 className="text-2xl font-bold">Blood Lab Test Results</h2>
             <table className="table-auto border-collapse w-full">
               <thead>
                 <tr className="border-b">
@@ -156,7 +186,7 @@ const Page = async ({
                 </tr>
               </thead>
               <tbody>
-                {LabTestResults.slice(0, 5).map((result, index) => (
+                {LabTestResults.slice(0, 4).map((result, index) => (
                   <tr key={index} className="border-b">
                     <td className="px-4 py-2">{result["Lab Test"]}</td>
                     <td className="px-4 py-2">{result.Result}</td>
@@ -171,11 +201,28 @@ const Page = async ({
               </Link>
             </div>
           </div>
-          <div className="hover-container flex-grow">
-            <h2>Evo2 Results</h2>
-            <EvoResult gene="None"/>
+          <div className="hover-container flex-grow flex flex-col items-center">
+            <h2 className="text-2xl font-bold">Evo2 Results</h2>
+            <EvoResult gene={gene} />
+            <div className="flex flex-col items-start w-full p-4">
+              <button
+                className="bttn"
+                onClick={() => {
+                  setGene(prompt("Enter your sequence") ?? "None");
+                }}
+              >
+                Submit sequence
+              </button>
+            </div>
           </div>
-          <div className="hover-container flex-grow">Analysis</div>
+          <div className="hover-container flex-grow">
+            <h2 className="text-2xl font-bold">Medication</h2>
+            <p>Medication: None</p>
+            <p>Prescription: None</p>
+            <button className="mt-2 px-4 py-2 bg-blue-500 text-white rounded-lg">
+              Edit
+            </button>
+          </div>
         </div>
       </div>
     </div>
