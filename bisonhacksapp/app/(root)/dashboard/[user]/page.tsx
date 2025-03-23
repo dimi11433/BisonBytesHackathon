@@ -4,6 +4,7 @@ import Link from "next/link";
 import users from "@/constants/users";
 import Guage from "@/components/ui/guage";
 import LabTestResults from "@/constants/testResults";
+import EvoResult from "@/components/ui/evoResult";
 
 const Page = async ({
   params,
@@ -128,7 +129,7 @@ const Page = async ({
 
         {/* End here */}
 
-        <div className="flex flex-col gap-4 m-4 w-100">
+        <div className="flex flex-col gap-4 mx-4 w-100">
           <div className="hover-container flex-grow p-4 flex flex-col justify-between items-center">
             <h2 className="text-xl font-bold">Lab Test Results</h2>
             <table className="table-auto border-collapse w-full">
@@ -155,7 +156,10 @@ const Page = async ({
               </Link>
             </div>
           </div>
-          <div className="hover-container flex-grow">Evo-2 Results</div>
+          <div className="hover-container flex-grow">
+            <h2>Evo2 Results</h2>
+            <EvoResult gene="None"/>
+          </div>
           <div className="hover-container flex-grow">Analysis</div>
         </div>
       </div>
