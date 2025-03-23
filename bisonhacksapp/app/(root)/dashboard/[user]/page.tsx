@@ -101,26 +101,41 @@ const Page = async ({
         {/* Start here */}
         <div className="flex flex-col items-center space-y-4">
           {/* First Container */}
-          <div className="hover-container w-64 h-32 flex flex-col justify-center items-center w-full">
-            <p className="text-lg font-medium text-center">Age: {userInfo?.Age}</p>
-            <p className="text-lg font-medium text-center">Weight: {userInfo?.Weight}</p>
-            <p className="text-lg font-medium text-center">BMI: {userInfo?.BMI}</p>
+          <div className="hover-container w-50 h-70 flex flex-row justify-around items-center w-full">
+            <div className="flex flex-col items-end">
+              <p className="text-6xl font-bold text-center "> {userInfo?.Age}</p>
+              <p className="text-lg font-bold text-center ">Years</p>
+            </div>
+            <div className="flex flex-col items-end">
+              <p className="text-6xl font-bold text-center"> {userInfo?.Weight} </p>
+              <p className="text-lg font-bold text-center">KG</p>
+            </div>
+            <div className="flex flex-col items-end">
+              <p className="text-6xl font-bold text-center"> {userInfo?.BMI} </p>
+              <p className="text-lg font-bold text-center">BMI</p>
+            </div>
           </div>
 
           {/* Second and Third Containers (Side by Side) */}
           <div className="flex space-x-4 flex-grow">
             {/* Second Container */}
-            <div className="hover-container w-64 h-40 flex flex-col justify-center items-center h-full">
-              <p className="text-lg font-medium text-center">Sleep: {userInfo?.Sleep_Duration}</p>
-              <p className="text-lg font-medium text-center">Sleep Quantity: {userInfo?.Sleep_Quantity}</p>
-              <p className="text-lg font-medium text-center">Water: {userInfo?.Water_Intake} L</p>
+            <div className="hover-container w-50 h-40 flex flex-col justify-around items-center h-full">
+              <div>
+                <p className="text-2xl font-medium text-center">Sleep: {userInfo?.Sleep_Duration} hrs</p>
+              </div>
+              <div>
+                <p className="text-2xl font-medium text-center">Sleep Qty: {userInfo?.Sleep_Quantity}</p>
+              </div>
+              <div>
+                <p className="text-2xl font-medium text-center">Water: {userInfo?.Water_Intake} Ltrs</p>
+              </div>
             </div>
 
             {/* Third Container */}
-            <div className="hover-container w-64 h-40 flex flex-col justify-center items-center h-full">
-              <p className="text-lg font-medium text-center">Sleep Consistency: {userInfo?.Sleep_Consistency}</p>
-              <p className="text-lg font-medium text-center">Steps: {userInfo?.Steps}</p>
-              <p className="text-lg font-medium text-center">Active Training Hours: {userInfo?.Strength_Training} hrs</p>
+            <div className="hover-container w-50 h-40 flex flex-col justify-around items-center h-full">
+              <p className="text-2xl font-medium text-center">Sleep Consistency: {userInfo?.Sleep_Consistency}</p>
+              <p className="text-2xl font-medium text-center">{userInfo?.Steps} steps/day</p>
+              <p className="text-2xl font-medium text-center">Active: {userInfo?.Strength_Training} </p>
             </div>
           </div>
         </div>
