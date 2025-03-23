@@ -3,9 +3,24 @@
 import { useRouter } from "next/navigation";
 import users from "@/constants/users";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 const Page = () => {
   const router = useRouter();
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    const fetchServerInfo = async () => {
+      const res = await fetch("/api/server-name"); 
+      console.log(res);
+      const data = await res.json();
+      setName(data.name);
+    }
+
+    fetchServerInfo();
+  }, []);
+
+
 
   return (
     <div className="p-6 bg-gradient-to-r from-blue-100 via-green-100 to-pink-100">
@@ -13,7 +28,7 @@ const Page = () => {
       <div className="flex flex-col items-center mb-6">
         <Image src="/bisonbytes.jpeg" alt="BisonBytes Logo" width={150} height={150} className="mb-2" />
         <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">
-          Dr. Bison
+          {name}
         </h1>
       </div>
 
