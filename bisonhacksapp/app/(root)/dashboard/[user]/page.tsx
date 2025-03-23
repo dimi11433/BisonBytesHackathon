@@ -31,7 +31,7 @@ const Page = async ({
         </div>
       </div>
       <div className="flex flex-row">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 place-items-center gap-6 w-[40vw] p-4 m-4 h-max hover-container">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 place-items-center gap-6 w-[40vw] p-4 mx-4 h-max hover-container">
           <Guage
             name="Heart Rate"
             limits={[50, 65, 81, 98]}
@@ -98,7 +98,34 @@ const Page = async ({
         </div>
 
         {/* Start here */}
-        <div></div>
+        <div className="flex flex-col items-center space-y-4">
+          {/* First Container */}
+          <div className="hover-container w-64 h-32 flex flex-col justify-center items-center w-full">
+            <p className="text-lg font-medium text-center">Age: {userInfo?.Age}</p>
+            <p className="text-lg font-medium text-center">Weight: {userInfo?.Weight}</p>
+            <p className="text-lg font-medium text-center">BMI: {userInfo?.BMI}</p>
+          </div>
+
+          {/* Second and Third Containers (Side by Side) */}
+          <div className="flex space-x-4 flex-grow">
+            {/* Second Container */}
+            <div className="hover-container w-64 h-40 flex flex-col justify-center items-center h-full">
+              <p className="text-lg font-medium text-center">Sleep: {userInfo?.Sleep_Duration}</p>
+              <p className="text-lg font-medium text-center">Sleep Quantity: {userInfo?.Sleep_Quantity}</p>
+              <p className="text-lg font-medium text-center">Water: {userInfo?.Water_Intake} L</p>
+            </div>
+
+            {/* Third Container */}
+            <div className="hover-container w-64 h-40 flex flex-col justify-center items-center h-full">
+              <p className="text-lg font-medium text-center">Sleep Consistency: {userInfo?.Sleep_Consistency}</p>
+              <p className="text-lg font-medium text-center">Steps: {userInfo?.Steps}</p>
+              <p className="text-lg font-medium text-center">Active Training Hours: {userInfo?.Strength_Training} hrs</p>
+            </div>
+          </div>
+        </div>
+
+
+
         {/* End here */}
 
         <div className="flex flex-col gap-4 m-4 w-100">
